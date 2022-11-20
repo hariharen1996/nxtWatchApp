@@ -8,20 +8,20 @@ export const HamBurgerButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  color: ${props => props.menuColor};
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
 export const PopupModal = styled.div`
-  width: 100%;
+  width: 102%;
   margin-right: 15px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
-  @media screen and (min-width: 768px) {
-    max-width: 1110px;
-  }
+  background-color: ${props => props.bgColor};
+  overflow-y: hidden;
 `
 export const CloseBtn = styled.button`
   align-self: flex-end;
@@ -32,6 +32,8 @@ export const CloseBtn = styled.button`
   margin-top: 20px;
   outline: none;
   cursor: pointer;
+  margin-right: 10px;
+  color: ${props => props.menuColor};
 `
 export const PopupNavItems = styled.ul`
   display: flex;
@@ -60,4 +62,5 @@ export const NavText = styled.p`
   line-height: 1.2;
   margin: 0px;
   margin-left: 8px;
+  color: ${props => props.menuColor};
 `

@@ -14,15 +14,20 @@ export const LogoContainer = styled.div`
 export const LogoImage = styled.img`
   width: 160px;
   height: 30px;
+
+  @media screen and (max-width: 400px) {
+    width: 100px;
+  }
 `
 export const NavItems = styled.ul`
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 5px;
-  gap: 15px;
+  gap: 12px;
+
   @media screen and (max-width: 768px) {
-    gap: 10px;
+    gap: 5px;
   }
 `
 
@@ -56,6 +61,7 @@ export const LogoutButton = styled(HeaderButton)`
 export const LogoutButtonSm = styled(HeaderButton)`
   padding: 0px;
   margin: 0px;
+  margin-left: 5px;
   @media screen and (min-width: 768px) {
     display: none;
   }

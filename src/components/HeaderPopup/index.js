@@ -23,45 +23,41 @@ class HeaderPopup extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {showTheme} = value
-          const bgColor = !showTheme ? 'bg-dark' : 'bg-light'
+          const bgColor = showTheme ? '#181818' : '#ffffff'
           const menuColor = !showTheme ? '#181818' : '#ffffff'
           const iconColor = showTheme ? 'menu-dark' : 'menu-light'
 
           return (
             <Popup
-              className={`popup-content ${bgColor}`}
+              className="popup-content"
               modal
               trigger={
-                <HamBurgerButton>
-                  <GiHamburgerMenu size={25} className={iconColor} />
+                <HamBurgerButton menuColor={menuColor}>
+                  <GiHamburgerMenu size={25} />
                 </HamBurgerButton>
               }
             >
               {close => (
-                <PopupModal>
-                  <CloseBtn onClick={() => close()}>
-                    <IoMdClose
-                      size={25}
-                      color="616e7c"
-                      className="close-icons"
-                    />
+                <PopupModal bgColor={bgColor}>
+                  <CloseBtn onClick={() => close()} menuColor={menuColor}>
+                    <IoMdClose size={25} />
                   </CloseBtn>
                   <PopupNavItems>
                     <PopupNavLists>
                       <NavLink to="/" onClick={() => close()}>
-                        <AiFillHome iconColor={iconColor} size={25} />
+                        <AiFillHome className={iconColor} size={25} />
                         <NavText menuColor={menuColor}>Home</NavText>
                       </NavLink>
                       <NavLink to="/trending" onClick={() => close()}>
-                        <AiFillFire iconColor={iconColor} size={25} />
+                        <AiFillFire className={iconColor} size={25} />
                         <NavText menuColor={menuColor}>Trending</NavText>
                       </NavLink>
                       <NavLink to="/gaming" onClick={() => close()}>
-                        <SiYoutubegaming iconColor={iconColor} size={25} />
+                        <SiYoutubegaming className={iconColor} size={25} />
                         <NavText menuColor={menuColor}>Gaming</NavText>
                       </NavLink>
                       <NavLink to="/saved" onClick={() => close()}>
-                        <HiSave iconColor={iconColor} size={25} />
+                        <HiSave className={iconColor} size={25} />
                         <NavText menuColor={menuColor}>Saved Videos</NavText>
                       </NavLink>
                     </PopupNavLists>
