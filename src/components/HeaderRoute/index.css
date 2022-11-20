@@ -1,0 +1,23 @@
+.bgDark {
+  background-color: #ffffff;
+}
+
+.bgLight {
+  background-color: #181818;
+}
+
+.theme-icon {
+  border: none;
+}
+
+.icon {
+  color: #ffffff;
+}
+
+.icon-dark {
+  color: #181818;
+}
+
+.icon-light {
+  color: #ffffff;
+}
