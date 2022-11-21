@@ -29,3 +29,24 @@ export const HomeContent = styled.div`
   align-items: flex-start;
   width: 100%;
 `
+
+export const HomeVideoContainer = styled.div`
+  margin-top: 20px;
+`
+
+export const HomeVideoItems = styled.ul`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding-left: 0px;
+  padding-bottom: 20px;
+`
+
+export const VideoFailure = styled.div``
+export const FailureImage = styled.img`
+  width: 100%;
+`
+export const FailureHeading = styled.h1``
+export const FailureMessage = styled.p``

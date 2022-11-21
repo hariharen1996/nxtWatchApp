@@ -6,6 +6,7 @@ export const SidebarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 100vh;
+  flex-grow: 1;
   background-color: ${props => props.bgColor};
 `
 export const SidebarMenu = styled.div`
