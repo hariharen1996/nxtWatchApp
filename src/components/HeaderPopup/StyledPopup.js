@@ -63,4 +63,8 @@ export const NavText = styled.p`
   margin: 0px;
   margin-left: 8px;
   color: ${props => props.menuColor};
+  &:hover {
+    color: #ff0000;
+    transition: 0.4s;
+  }
 `

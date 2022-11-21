@@ -26,9 +26,13 @@ export const SidebarLists = styled.li`
 `
 export const MenuText = styled.p`
   color: ${props => props.menuColor};
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   font-family: 'Roboto';
+  &:hover {
+    color: #ff0000;
+    transition: 0.4s;
+  }
 `
 export const SidebarContact = styled.div`
   align-self: flex-start;

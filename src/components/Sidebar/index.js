@@ -24,7 +24,7 @@ class Sidebar extends Component {
         {value => {
           const {showTheme} = value
 
-          const bgColor = showTheme ? '#181818' : '#ffffff'
+          const bgColor = showTheme ? '#231f20' : '#ffffff'
           const menuColor = !showTheme ? '#212121' : '#ffffff'
           const iconColor = showTheme ? 'menu-dark' : 'menu-light'
 
@@ -33,20 +33,19 @@ class Sidebar extends Component {
               <SidebarMenu>
                 <SidebarItems>
                   <SidebarLists>
-                    <AiFillHome className={iconColor} size={20} />
+                    <AiFillHome className={`icons ${iconColor}`} size={25} />
                     <MenuText menuColor={menuColor}>Home</MenuText>
                   </SidebarLists>
                   <SidebarLists>
-                    <AiFillFire className={iconColor} size={20} />
+                    <AiFillFire className={iconColor} size={25} />
                     <MenuText menuColor={menuColor}>Trending</MenuText>
                   </SidebarLists>
                   <SidebarLists>
-                    <SiYoutubegaming size={20} className={iconColor} />
-
+                    <SiYoutubegaming size={25} className={iconColor} />
                     <MenuText menuColor={menuColor}>Gaming</MenuText>
                   </SidebarLists>
                   <SidebarLists>
-                    <HiSave size={20} className={iconColor} />
+                    <HiSave size={25} className={iconColor} />
                     <MenuText menuColor={menuColor}>Saved Videos</MenuText>
                   </SidebarLists>
                 </SidebarItems>

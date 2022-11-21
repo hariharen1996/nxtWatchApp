@@ -45,7 +45,10 @@ class HeaderPopup extends Component {
                   <PopupNavItems>
                     <PopupNavLists>
                       <NavLink to="/" onClick={() => close()}>
-                        <AiFillHome className={iconColor} size={25} />
+                        <AiFillHome
+                          className={`icons ${iconColor}`}
+                          size={25}
+                        />
                         <NavText menuColor={menuColor}>Home</NavText>
                       </NavLink>
                       <NavLink to="/trending" onClick={() => close()}>

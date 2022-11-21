@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 import LoginRoute from './components/LoginRoute/index'
 import HomeRoute from './components/HomeRoute/index'
 import ThemeContext from './context/ThemeContext'
+import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 // Replace your code here
@@ -20,8 +21,8 @@ class App extends Component {
     return (
       <ThemeContext.Provider value={{showTheme, changeTheme: this.changeTheme}}>
         <Switch>
-          <Route path="/login" component={LoginRoute} />
-          <Route path="/" component={HomeRoute} />
+          <Route exact path="/login" component={LoginRoute} />
+          <ProtectedRoute exact path="/" component={HomeRoute} />
         </Switch>
       </ThemeContext.Provider>
     )

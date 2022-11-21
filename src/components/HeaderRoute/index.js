@@ -1,4 +1,6 @@
 import {Component} from 'react'
+import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 import {
   RiLightbulbFlashFill,
   RiLightbulbFlashLine,
@@ -23,6 +25,11 @@ import './index.css'
 
 class HeaderRoute extends Component {
   render() {
+    const logoutApp = () => {
+      const {history} = this.props
+      Cookies.remove('jwt_token')
+      history.replace('/login')
+    }
     return (
       <ThemeContext.Consumer>
         {value => {
@@ -82,12 +89,13 @@ class HeaderRoute extends Component {
                         type="button"
                         btnColor={btnColor}
                         btnBorder={btnBorder}
+                        onClick={logoutApp}
                       >
                         Logout
                       </LogoutButton>
                     </NavLinks>
                     <NavLinks>
-                      <LogoutButtonSm type="button">
+                      <LogoutButtonSm type="button" onClick={logoutApp}>
                         {showTheme ? (
                           <RiLogoutBoxRLine size={25} className="icon-light" />
                         ) : (
@@ -106,4 +114,4 @@ class HeaderRoute extends Component {
   }
 }
 
-export default HeaderRoute
+export default withRouter(HeaderRoute)
