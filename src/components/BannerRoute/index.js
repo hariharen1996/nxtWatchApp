@@ -30,6 +30,7 @@ class BannerRoute extends Component {
               onClick={this.closeBanner}
               size={20}
               cursor="pointer"
+              data-testid="close"
             />
           </BannerLogoContainer>
           <BannerText>Buy Nxt Watch Premium prepaid plans with UPI</BannerText>

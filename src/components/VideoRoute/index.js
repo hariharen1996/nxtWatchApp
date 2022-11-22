@@ -27,9 +27,9 @@ class VideoRoute extends Component {
           const textColor = !showTheme ? '#181818' : '#ffffff'
           return (
             <VideoLists>
-              <VideoImage src={thumbnailUrl} alt={title} />
+              <VideoImage src={thumbnailUrl} alt="video thumbnail" />
               <VideoProfile>
-                <ProfileImage src={profileImage} alt={name} />
+                <ProfileImage src={profileImage} alt="channel logo" />
                 <VideoTitle textColor={textColor}>{title}</VideoTitle>
               </VideoProfile>
               <VideoContent>

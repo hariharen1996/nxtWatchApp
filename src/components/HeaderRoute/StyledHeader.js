@@ -10,6 +10,10 @@ export const HeaderContainer = styled.div`
 `
 export const LogoContainer = styled.div`
   margin: 5px;
+  margin-left: 200px;
+  @media screen and (max-width: 800px) {
+    margin-left: 0px;
+  }
 `
 export const LogoImage = styled.img`
   width: 160px;

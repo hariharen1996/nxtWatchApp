@@ -19,7 +19,8 @@ export const VideoImage = styled.img`
     width: 250px;
   }
   @media screen and (max-width: 565px) {
-    width: 100%;
+    width: 350px;
+    object-fit: contain;
   }
 `
 export const VideoProfile = styled.div`

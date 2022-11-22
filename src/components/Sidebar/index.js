@@ -27,11 +27,17 @@ class Sidebar extends Component {
           const bgColor = showTheme ? '#231f20' : '#ffffff'
           const menuColor = !showTheme ? '#212121' : '#ffffff'
           const iconColor = showTheme ? 'menu-dark' : 'menu-light'
+          /* const logoImage = !showTheme
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png' */
 
           return (
             <SidebarContainer bgColor={bgColor}>
               <SidebarMenu>
                 <SidebarItems>
+                  {/* <SidebarLists>
+                    <LogoImage src={logoImage} alt="website logo" />
+                  </SidebarLists> */}
                   <SidebarLists>
                     <AiFillHome className={`icons ${iconColor}`} size={25} />
                     <MenuText menuColor={menuColor}>Home</MenuText>

@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
 export const SidebarContainer = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
-  flex-grow: 1;
+  z-index: 1000;
+  flex-flow: column;
+  width: 200px;
   background-color: ${props => props.bgColor};
 `
 export const SidebarMenu = styled.div`
