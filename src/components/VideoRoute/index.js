@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {BsDot} from 'react-icons/bs'
 import ThemeContext from '../../context/ThemeContext'
 import {
   VideoLists,
@@ -11,12 +12,13 @@ import {
   ViewCount,
   VideoDetails,
   VideoContent,
+  NavLinks,
 } from './StyledVideo'
 
 class VideoRoute extends Component {
   render() {
     const {data} = this.props
-    const {publishedAt, thumbnailUrl, title, viewCount, channel} = data
+    const {id, publishedAt, thumbnailUrl, title, viewCount, channel} = data
     const {name, profileImage} = channel
 
     return (
@@ -27,18 +29,22 @@ class VideoRoute extends Component {
           const textColor = !showTheme ? '#181818' : '#ffffff'
           return (
             <VideoLists>
-              <VideoImage src={thumbnailUrl} alt="video thumbnail" />
-              <VideoProfile>
-                <ProfileImage src={profileImage} alt="channel logo" />
-                <VideoTitle textColor={textColor}>{title}</VideoTitle>
-              </VideoProfile>
-              <VideoContent>
-                <VideoName>{name}</VideoName>
-                <VideoDetails>
-                  <ViewCount>{viewCount} ·</ViewCount>
-                  <PublishedDate>{publishedAt} </PublishedDate>
-                </VideoDetails>
-              </VideoContent>
+              <NavLinks to={`videos/${id}`}>
+                <VideoImage src={thumbnailUrl} alt="video thumbnail" />
+                <VideoProfile>
+                  <ProfileImage src={profileImage} alt="channel logo" />
+                  <VideoContent>
+                    <VideoTitle textColor={textColor}>{title}</VideoTitle>
+                    <VideoName>{name}</VideoName>
+                    <VideoDetails>
+                      <ViewCount>
+                        {viewCount} <BsDot />
+                      </ViewCount>
+                      <PublishedDate>{publishedAt} </PublishedDate>
+                    </VideoDetails>
+                  </VideoContent>
+                </VideoProfile>
+              </NavLinks>
             </VideoLists>
           )
         }}

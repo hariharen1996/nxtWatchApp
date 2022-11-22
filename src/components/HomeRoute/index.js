@@ -26,7 +26,7 @@ import BannerRoute from '../BannerRoute'
 import VideoRoute from '../VideoRoute/index'
 import './index.css'
 
-const apiStatusTypes = {
+const constantTypes = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   loading: 'LOADING',
@@ -37,7 +37,7 @@ class HomeRoute extends Component {
   state = {
     searchResults: [],
     searchInput: '',
-    apiStatus: apiStatusTypes.initial,
+    apiStatus: constantTypes.initial,
   }
 
   componentDidMount() {
@@ -45,7 +45,7 @@ class HomeRoute extends Component {
   }
 
   getSearchResults = async () => {
-    this.setState({apiStatus: apiStatusTypes.loading})
+    this.setState({apiStatus: constantTypes.loading})
     const {searchInput} = this.state
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -74,10 +74,10 @@ class HomeRoute extends Component {
       }))
       this.setState({
         searchResults: updatedData,
-        apiStatus: apiStatusTypes.success,
+        apiStatus: constantTypes.success,
       })
     } else {
-      this.setState({apiStatus: apiStatusTypes.failure})
+      this.setState({apiStatus: constantTypes.failure})
     }
   }
 
@@ -179,11 +179,11 @@ class HomeRoute extends Component {
   renderStatus = () => {
     const {apiStatus} = this.state
     switch (apiStatus) {
-      case apiStatusTypes.success:
+      case constantTypes.success:
         return this.renderSuccess()
-      case apiStatusTypes.failure:
+      case constantTypes.failure:
         return this.renderFailure()
-      case apiStatusTypes.loading:
+      case constantTypes.loading:
         return this.renderLoading()
       default:
         return null

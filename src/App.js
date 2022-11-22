@@ -4,6 +4,7 @@ import LoginRoute from './components/LoginRoute/index'
 import HomeRoute from './components/HomeRoute/index'
 import ThemeContext from './context/ThemeContext'
 import ProtectedRoute from './components/ProtectedRoute'
+import VideoItemDetails from './components/VideoItemDetails'
 import './App.css'
 
 // Replace your code here
@@ -23,6 +24,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={LoginRoute} />
           <ProtectedRoute exact path="/" component={HomeRoute} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
         </Switch>
       </ThemeContext.Provider>
     )
