@@ -13,6 +13,7 @@ import {
   Image,
   SocialImage,
   ContactDescription,
+  NavLink,
 } from './StyledSidebar'
 import ThemeContext from '../../context/ThemeContext'
 import './index.css'
@@ -38,10 +39,13 @@ class Sidebar extends Component {
                   {/* <SidebarLists>
                     <LogoImage src={logoImage} alt="website logo" />
                   </SidebarLists> */}
-                  <SidebarLists>
-                    <AiFillHome className={`icons ${iconColor}`} size={25} />
-                    <MenuText menuColor={menuColor}>Home</MenuText>
-                  </SidebarLists>
+                  <NavLink to="/">
+                    <SidebarLists>
+                      <AiFillHome className={`icons ${iconColor}`} size={25} />
+                      <MenuText menuColor={menuColor}>Home</MenuText>
+                    </SidebarLists>
+                  </NavLink>
+
                   <SidebarLists>
                     <AiFillFire className={iconColor} size={25} />
                     <MenuText menuColor={menuColor}>Trending</MenuText>
@@ -50,10 +54,12 @@ class Sidebar extends Component {
                     <SiYoutubegaming size={25} className={iconColor} />
                     <MenuText menuColor={menuColor}>Gaming</MenuText>
                   </SidebarLists>
-                  <SidebarLists>
-                    <HiSave size={25} className={iconColor} />
-                    <MenuText menuColor={menuColor}>Saved Videos</MenuText>
-                  </SidebarLists>
+                  <NavLink to="/saved-videos">
+                    <SidebarLists>
+                      <HiSave size={25} className={iconColor} />
+                      <MenuText menuColor={menuColor}>Saved Videos</MenuText>
+                    </SidebarLists>
+                  </NavLink>
                 </SidebarItems>
               </SidebarMenu>
               <SidebarContact>

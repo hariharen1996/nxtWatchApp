@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const SidebarContainer = styled.div`
   position: fixed;
@@ -67,4 +68,8 @@ export const ContactDescription = styled.p`
   font-family: 'Roboto';
   color: ${props => props.menuColor};
   line-height: 1.4;
+`
+
+export const NavLink = styled(Link)`
+  text-decoration: none;
 `

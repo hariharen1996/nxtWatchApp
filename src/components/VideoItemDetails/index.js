@@ -17,7 +17,7 @@ import {
   FailureImage,
 } from './StyledVideoItems'
 
-import SpecificVideos from '../SpecificVideos/index'
+import SpecificVideos from '../SpecificVideos'
 
 const constantTypes = {
   initial: 'INITIAL',
@@ -52,6 +52,7 @@ class VideoItemDetails extends Component {
       const updatedData = {
         channel: {
           name: data.video_details.channel.name,
+          profileImg: data.video_details.channel.profile_image_url,
         },
         id: data.video_details.id,
         description: data.video_details.description,

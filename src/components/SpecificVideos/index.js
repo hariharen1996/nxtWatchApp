@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player'
 import {BsDot} from 'react-icons/bs'
 import {AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {BiSave} from 'react-icons/bi'
+import {formatDistanceToNow} from 'date-fns'
 import {
   VideoLists,
   PlayerTitle,
@@ -15,10 +16,33 @@ import {
   Dislikes,
   Save,
   HorizontalLine,
+  PlayerProfile,
+  PlayerImage,
+  PlayerNames,
+  PlayerSubCount,
+  PlayerContent,
+  PlayerDescription,
+  SpanText,
 } from './StyledSpecificVideos'
 import ThemeContext from '../../context/ThemeContext'
 
 class SpecificVideos extends Component {
+  state = {showLike: false, showDislike: false}
+
+  onLike = () => {
+    this.setState(prevState => ({
+      showLike: !prevState.showLike,
+      showDislike: prevState.showLike,
+    }))
+  }
+
+  onDislike = () => {
+    this.setState(prevState => ({
+      showLike: prevState.showDislike,
+      showDislike: !prevState.showDislike,
+    }))
+  }
+
   render() {
     const {data} = this.props
     const {
@@ -26,19 +50,38 @@ class SpecificVideos extends Component {
       id,
       description,
       publishedAt,
-      thumbnailUrl,
       title,
       viewCount,
       videoUrl,
     } = data
-    const {name} = channel
-
+    const {name, profileImg} = channel
+    const {showLike, showDislike} = this.state
     return (
       <ThemeContext.Consumer>
         {value => {
-          const {showTheme} = value
+          const {showTheme, savedVideos, addVideos, deleteVideos} = value
           const textColor = !showTheme ? '#181818' : '#f1f1f1'
           const iconsColor = !showTheme ? '#606060' : '#64748b'
+          let isSaved
+          const isVideoPresent = savedVideos.some(items => items.id === id)
+          const isSavedIndex = savedVideos.findIndex(items => items.id === id)
+
+          if (isSavedIndex === -1) {
+            isSaved = false
+          } else {
+            isSaved = true
+          }
+
+          const savedColor = !isSaved ? '#64748b' : '#2563eb'
+
+          const getSavedVideos = () => {
+            addVideos(data)
+          }
+
+          const unSavedVideos = () => {
+            deleteVideos(id)
+          }
+
           return (
             <VideoLists>
               <ReactPlayer url={videoUrl} width="100%" controls />
@@ -46,23 +89,70 @@ class SpecificVideos extends Component {
               <PlayerDetails>
                 <PlayerCounts>
                   <PlayerLikes>
-                    {viewCount} <BsDot />
+                    {viewCount} views <BsDot />
                   </PlayerLikes>
-                  <PlayerDate>{publishedAt}</PlayerDate>
+                  <PlayerDate>
+                    {formatDistanceToNow(new Date(publishedAt))}
+                  </PlayerDate>
                 </PlayerCounts>
+
                 <PlayerLikesData>
-                  <Likes iconsColor={iconsColor}>
-                    <AiOutlineLike /> Likes
+                  <Likes
+                    type="button"
+                    onClick={this.onLike}
+                    iconsColor={iconsColor}
+                  >
+                    <AiOutlineLike color={!showLike ? '#64748b' : '#2563eb'} />{' '}
+                    <SpanText color={!showLike ? '#64748b' : '#2563eb'}>
+                      Likes
+                    </SpanText>
                   </Likes>
-                  <Dislikes iconsColor={iconsColor}>
-                    <AiOutlineDislike /> Dislike
+                  <Dislikes
+                    iconsColor={iconsColor}
+                    type="button"
+                    onClick={this.onDislike}
+                  >
+                    <AiOutlineDislike
+                      color={!showDislike ? '#64748b' : '#2563eb'}
+                    />
+                    <SpanText color={!showDislike ? '#64748b' : '#2563eb'}>
+                      Dislike
+                    </SpanText>
                   </Dislikes>
-                  <Save iconsColor={iconsColor}>
-                    <BiSave /> Save {name}
-                  </Save>
+                  {isVideoPresent ? (
+                    <Save
+                      type="button"
+                      onClick={unSavedVideos}
+                      iconsColor={iconsColor}
+                    >
+                      <BiSave color={savedColor} />
+                      <SpanText color={savedColor}>Saved</SpanText>
+                    </Save>
+                  ) : (
+                    <Save
+                      type="button"
+                      onClick={getSavedVideos}
+                      iconsColor={iconsColor}
+                    >
+                      <BiSave color={savedColor} />
+                      <SpanText color={savedColor}>Save</SpanText>
+                    </Save>
+                  )}
                 </PlayerLikesData>
               </PlayerDetails>
               <HorizontalLine />
+              <PlayerProfile>
+                <PlayerImage src={profileImg} alt="channel logo" />
+                <PlayerContent>
+                  <PlayerNames showTheme={showTheme}>{name}</PlayerNames>
+                  <PlayerSubCount iconsColor={iconsColor}>
+                    {viewCount} subscribers
+                  </PlayerSubCount>
+                </PlayerContent>
+              </PlayerProfile>
+              <PlayerDescription iconsColor={textColor}>
+                {description}
+              </PlayerDescription>
             </VideoLists>
           )
         }}
