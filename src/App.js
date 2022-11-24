@@ -6,6 +6,8 @@ import ThemeContext from './context/ThemeContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import VideoItemDetails from './components/VideoItemDetails'
 import SavedVideoRoute from './components/SavedVideoRoute'
+import TrendingRoute from './components/TrendingRoute'
+import GamingRoute from './components/GamingRoute'
 import './App.css'
 
 // Replace your code here
@@ -55,6 +57,8 @@ class App extends Component {
             path="/saved-videos"
             component={SavedVideoRoute}
           />
+          <ProtectedRoute exact path="/trending" component={TrendingRoute} />
+          <ProtectedRoute exact path="/gaming" component={GamingRoute} />
         </Switch>
       </ThemeContext.Provider>
     )

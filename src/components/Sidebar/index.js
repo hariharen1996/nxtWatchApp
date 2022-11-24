@@ -45,15 +45,18 @@ class Sidebar extends Component {
                       <MenuText menuColor={menuColor}>Home</MenuText>
                     </SidebarLists>
                   </NavLink>
-
-                  <SidebarLists>
-                    <AiFillFire className={iconColor} size={25} />
-                    <MenuText menuColor={menuColor}>Trending</MenuText>
-                  </SidebarLists>
-                  <SidebarLists>
-                    <SiYoutubegaming size={25} className={iconColor} />
-                    <MenuText menuColor={menuColor}>Gaming</MenuText>
-                  </SidebarLists>
+                  <NavLink to="/trending">
+                    <SidebarLists>
+                      <AiFillFire className={iconColor} size={25} />
+                      <MenuText menuColor={menuColor}>Trending</MenuText>
+                    </SidebarLists>
+                  </NavLink>
+                  <NavLink to="/gaming">
+                    <SidebarLists>
+                      <SiYoutubegaming size={25} className={iconColor} />
+                      <MenuText menuColor={menuColor}>Gaming</MenuText>
+                    </SidebarLists>
+                  </NavLink>
                   <NavLink to="/saved-videos">
                     <SidebarLists>
                       <HiSave size={25} className={iconColor} />
